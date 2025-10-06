@@ -2,6 +2,7 @@
 
 import dotenv from "dotenv";
 import typesenseClient from "../config/typesense";
+import { CollectionCreateSchema } from "typesense/lib/Typesense/Collections";
 
 // Load environment variables
 dotenv.config();
@@ -10,16 +11,16 @@ const createVMSearchCollection = async () => {
   try {
     console.log("🔍 Creating vm_search collection...");
 
-    const vmSearchCollectionSchema = {
+    const vmSearchCollectionSchema: CollectionCreateSchema = {
       name: "vm_search",
       fields: [
-        { name: "ID", type: "int32" },
-        { name: "date", type: "string", facet: true },
-        { name: "slug", type: "string" },
-        { name: "type", type: "string" },
-        { name: "title", type: "string", sort: true },
-        { name: "status", type: "string" },
-        { name: "content", type: "string" },
+        { name: "ID", type: "int32" as const },
+        { name: "date", type: "string" as const, facet: true },
+        { name: "slug", type: "string" as const },
+        { name: "type", type: "string" as const },
+        { name: "title", type: "string" as const },
+        { name: "status", type: "string" as const },
+        { name: "content", type: "string" as const },
       ],
       default_sorting_field: "title",
     };
