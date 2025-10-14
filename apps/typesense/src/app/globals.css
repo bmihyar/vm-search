@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for InstantSearch components */
+.ais-SearchBox-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.ais-SearchBox-input {
+  @apply w-full px-4 py-3 pl-12 pr-12 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg shadow-sm;
+}
+
+.ais-SearchBox-submit {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.ais-SearchBox-submitIcon {
+  @apply w-5 h-5 text-gray-400;
+}
+
+.ais-SearchBox-reset {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.ais-SearchBox-resetIcon {
+  @apply w-5 h-5 text-gray-400 hover:text-gray-600 transition-colors;
+}
+
+.ais-Hits-list {
+  @apply space-y-3;
+}
+
+.ais-Hits-item {
+  @apply list-none;
+}
+
+.ais-Stats {
+  @apply text-sm text-gray-600;
+}
+
+/* Custom highlight styling */
+mark {
+  @apply bg-yellow-200 font-semibold rounded px-1;
+}
+
+/* Smooth transitions for expand/collapse */
+.search-result-content {
+  transition: all 0.3s ease-in-out;
+}
+
+/* Custom scrollbar for content previews */
+.content-preview::-webkit-scrollbar {
+  width: 4px;
+}
+
+.content-preview::-webkit-scrollbar-track {
+  @apply bg-gray-100;
+}
+
+.content-preview::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full;
+}
+
+.content-preview::-webkit-scrollbar-thumb:hover {
+  @apply bg-gray-400;
+}
+
+/* Hover effects */
+.search-result-title {
+  transition: color 0.2s ease-in-out;
+}
+
+.search-result-card:hover .search-result-title {
+  @apply text-blue-600;
+}
+
+/* Loading states */
+.ais-Hits-item[data-loading="true"] {
+  @apply opacity-50 animate-pulse;
+}
+
+/* Empty state styling */
+.ais-Hits-item:empty::before {
+  content: "No results found. Try adjusting your search terms.";
+  @apply block text-gray-500 text-center py-8 px-4 italic;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .ais-SearchBox-input {
+    @apply text-base py-2 pl-10 pr-10;
+  }
+
+  .ais-SearchBox-submit {
+    left: 8px;
+  }
+
+  .ais-SearchBox-reset {
+    right: 8px;
+  }
+
+  .ais-SearchBox-submitIcon,
+  .ais-SearchBox-resetIcon {
+    @apply w-4 h-4;
+  }
+}
+
+/* Focus states for accessibility */
+.search-result-card:focus-within {
+  @apply ring-2 ring-blue-500 ring-opacity-50;
+}
+
+/* Animation for expand/collapse icon */
+.expand-icon {
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Content fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.content-expanded {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Custom styling for metadata badges */
+.metadata-badge {
+  @apply inline-flex items-center px-2 py-1 rounded-full text-xs font-medium transition-colors;
+}
+
+.metadata-badge-blue {
+  @apply bg-blue-100 text-blue-700 hover:bg-blue-200;
+}
+
+.metadata-badge-gray {
+  @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+}
+
+/* Link styling */
+.read-more-link {
+  @apply inline-flex items-center font-medium text-sm transition-all duration-200;
+}
+
+.read-more-link:hover {
+  @apply transform translate-x-1;
+}
